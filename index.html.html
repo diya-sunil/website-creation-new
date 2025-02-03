@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Ludiflex | Login & Registration</title>
+</head>
+<body>
+ <div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <p>LEMIORA</p>
+        </div>
+       
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn" onclick="showLogin()">Sign In</button>
+            <button class="btn" id="registerBtn" onclick="showRegister()">Sign Up</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+<!----------------------------- Form box ----------------------------------->    
+    <div class="form-box">
+        
+        <!------------------- login form -------------------------->
+        <div class="login-container" id="login">
+
+            <div class="top">
+                <span>Don't have an account? <a href="#" onclick="showRegister()">Sign Up</a></span>
+                <header>Login</header>
+            </div>
+            <div class="input-box">
+                <input type="text" class="input-field" id="username" placeholder="Username or Email">
+                <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" id="password" placeholder="Password">
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input type="submit" class="submit" value="Sign In" onclick="login()">
+<script>
+function login(){
+let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
+let uname = localStorage.getItem("username");
+let pass = localStorage.getItem("password");
+if(username == uname && password==pass)
+{alert("you are valid");}
+else{ alert("invalid");}
+}
+</script>
+
+            </div>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="login-check">
+                    <label for="login-check"> Remember Me</label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Forgot password?</a></label>
+                </div>
+            </div>
+        </div>
+        <!------------------- registration form -------------------------->
+        <div class="register-container" id="register">
+            <div class="top">
+                <span>Have an account? <a href="#" onclick="showLogin()">Login</a></span>
+                <header>Sign Up</header>
+            </div>
+            <div class="two-forms">
+                <div class="input-box">
+                    <input type="text" class="input-field" id="registerFirstname" placeholder="Firstname">
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <input type="text" class="input-field" id="registerLastname" placeholder="Lastname">
+                    <i class="bx bx-user"></i>
+                </div>
+            </div>
+            <div class="input-box">
+                <input type="email" class="input-field" placeholder="Email" id="username">
+                <i class="bx bx-envelope"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" placeholder="Password" id="password">
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input type="submit" class="submit" value="Sign Up" onclick="register()">
+<script>
+function register(){
+let username = document.getElementById("username").value;
+let password = document.getElementById("password").value;
+localStorage.setItem("username", username);
+localStorage.setItem("password", password);
+//alert(localStorage.getItem("username"));
+//alert(localStorage.getItem("password"));
+}
+</script>
+
+            </div>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="register-check">
+                    <label for="register-check"> Remember Me</label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Terms & conditions</a></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+<script>
+   function myMenuFunction() {
+    var i = document.getElementById("navMenu");
+    if(i.className === "nav-menu") {
+        i.className += " responsive";
+    } else {
+        i.className = "nav-menu";
+    }
+   }
+
+   function showLogin() {
+        var loginContainer = document.getElementById("login");
+        var registerContainer = document.getElementById("register");
+        var loginBtn = document.getElementById("loginBtn");
+        var registerBtn = document.getElementById("registerBtn");
+        
+        loginContainer.style.left = "4px";
+        registerContainer.style.right = "-520px";
+        loginBtn.className += " white-btn";
+        registerBtn.className = "btn";
+        loginContainer.style.opacity = 1;
+        registerContainer.style.opacity = 0;
+    }
+
+    function showRegister() {
+        var loginContainer = document.getElementById("login");
+        var registerContainer = document.getElementById("register");
+        var loginBtn = document.getElementById("loginBtn");
+        var registerBtn = document.getElementById("registerBtn");
+        
+        loginContainer.style.left = "-510px";
+        registerContainer.style.right = "5px";
+        loginBtn.className = "btn";
+        registerBtn.className += " white-btn";
+        loginContainer.style.opacity = 0;
+        registerContainer.style.opacity = 1;
+    }
+
+    let userData = {};
+
+</script>
+</body>
+</html>
